@@ -1,0 +1,29 @@
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div ng-app="myApp" ng-controller="namesCtrl">  
+<ul>  
+  <li ng-repeat="x in names | filter : 'P'">  
+    {{ x }}  
+  </li>  
+</ul>  
+</div>  
+<script>  
+angular.module('myApp', []).controller('namesCtrl', function($scope) {  
+    $scope.names = [  
+'Ramesh',  
+'Pooja',  
+'Mahesh',  
+'Ramanujam',  
+'Osama',  
+'Iqbal',  
+'Karl',  
+'Johnson',  
+'Alex'  
+    ];  
+});  
+</script>  
+<p>This example displays only the names containing the letter "o".</p>  
+</body>  
+</html>  

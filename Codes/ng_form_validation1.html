@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng form validation</title>
+    <style>
+        form.ng-dirty{
+            background-color: yellow;
+        }
+        form.ng-pristine{
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <h3>Form validation</h3>
+        <form name="myform" ng-submit="submitForm()" ng-class="{'ng-dirty': myform.$dirty, 'ng-pristine': myform.$pristine}" novalidate>
+            <label for="username">Enter Username(5-15 characters, starts with capital letter):</label>
+            <input type="text" name="username" ng-model="username" required minlength="5" maxlength="15" ng-pattern="/^[A-Z][a-zA-Z]*$/" ng-class="{'is-invalid': myform.username.$invalid && myform.username.$dirty}"/> <br>
+            <span ng-show="myform.username.$invalid && myform.username.$dirty">
+                Enter valid username
+            </span> <br> <br>
+
+            <label for="email">Enter Email:</label>
+            <input type="text" name="email" ng-model="email" required ng-pattern="/^[a-z0-9]+@[a-z]+\.[a-z]+$/" ng-class="{'is-invalid': myform.email.$invalid && myform.email.$dirty}"/> <br>
+            <span ng-show="myform.email.$invalid && myform.email.$dirty">
+                Enter a valid email
+            </span> <br> <br>
+
+            <label for="age">Enter Age:</label>
+            <input type="number" name="age" required min="18" ng-model="age"   ng-class="{'is-invalid': myform.age.$invalid && myform.age.$dirty}"/> <br>
+            <span ng-show="myform.age.$invalid && myform.age.$dirty">
+                Age must be atleast 18
+            </span> <br>
+            <input type="submit" value="Submit" ng-disabled="myform.$invalid"/>
+            
+        </form>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.username="";
+            $scope.email="";
+            $scope.age="";
+            
+            $scope.submitForm= function(){
+                if($scope.myform.$valid){
+                    alert("Form submitted");
+                }
+                else{
+                    alert("Invalid Entry");
+                }
+            };
+        });
+    </script>
+</body>
+</html>

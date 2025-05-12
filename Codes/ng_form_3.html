@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="MyApp" ng-controller="MyCtrl">
+    <form name="myform" onsubmit="check()" novalidate>
+        <h4>Username:</h4>
+        <input type="text" name="username" ng-model="user.username" required ng-pattern="/^[A-Z][a-zA-Z]*$/">
+        <div ng-show="myform.username.$touched">
+            <span ng-show="myform.username.$error.pattern">Enter valid username</span>
+            <span ng-show="myform.username.$error.required">Enter Username!</span>
+        </div>
+        <h4>Email:</h4>
+        <input type="email" name="email" ng-model="user.email" required ng-pattern="/^[A-Za-z0-9]+@[a-zA-Z]\.[a-z]+$/">
+        <div ng-show="myform.email.$touched">
+            <span ng-show="myform.email.$error.pattern">Enter valid email</span>
+            <span ng-show="myform.email.$error.required">Enter Email!</span>
+        </div>
+        <h4>Password:</h4>
+        <input type="password" name="password" ng-model="user.password" required ng-pattern="/^[a-zA-Z0-9]{5,15}$/" />
+        <div ng-show="myform.password.$touched">
+            <span ng-show="myform.password.$error.required">Password is required</span>
+            <span ng-show="myform.password.$error.pattern">Password must be 5-15 alphanumeric characters</span>
+        </div>
+        <h4>Confirm Password:</h4>
+        <input type="password" name="confirm" ng-model="user.confirm" required ng-pattern="/^[a-zA-Z0-9]{5,15}$/" />
+        <div ng-show="myform.confirm.$touched && myform.password.$valid">
+            <span ng-show="user.password!=user.confirm">Password do not match</span>
+            <span ng-show="myform.confirm.$error.required">Confirm Password</span>
+        </div>
+        <h4>Accept Terms:</h4>
+        <input type="checkbox" name="terms" ng-model="user.terms" required/>
+        <div ng-show="myform.terms.$touched">
+            <span ng-show="!user.terms">Accept!</span>
+        </div>
+        <h4>Gender:</h4>
+        <label><input type="radio" value="Male" ng-model="user.gender">Male</label>
+        <label><input type="radio" value="Female" ng-model="user.gender">Female</label>
+        <div ng-show="myform.$submitted && !user.gender">
+            <span>Select gender</span>
+        </div>
+        <h4>Course:</h4>
+        <select name="course" ng-model="user.course" ng-options="course for course in courses" required>
+            <option value="">--Select Course--</option>
+        </select>
+    </form>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.courses=["BTech"];
+        });
+    </script>
+</body>
+</html>

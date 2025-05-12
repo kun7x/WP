@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .info p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #fff;
+            font-weight: 500;
+        }
+        .media {
+            margin-top: 30px;
+        }
+        .media h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        audio, video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Information</h1>
+        <div class="info">
+            <p style="color: #ffdd57; font-weight: bold;">Name: Kundan S. Patil</p>
+            <p>SAP ID: 70552300060</p>
+            <p>Roll No: E258</p>
+            <p>Program: B.Tech</p>
+            <p>Branch: Computer Science</p>
+            <p>Year: 2nd</p>
+        </div>
+        <div class="media">
+            <h2>Audio</h2>
+            <audio controls style="border-radius: 25px;">
+                <source src="./sample.wav" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <h2>Video</h2>
+            <video controls>
+                <source src="./sample.webm" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+    </div>
+</body>
+</html>

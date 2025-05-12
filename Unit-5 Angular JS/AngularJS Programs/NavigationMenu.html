@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+nav{margin-top:20px;
+}
+a{
+ color:red;
+ background-color:yellow;
+ padding:20px;
+ text-transform:uppercase;
+ border-radius:8px;
+ text-decoration:none;
+ }
+b{background-color:pink;
+padding:10px;
+display:inline-block;
+text-transform:uppercase;
+width:80px;
+text-align:center;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="main" ng-app>
+    
+<nav ng-click="$event.preventDefault()">
+
+<a href="#"  ng-click="active='home'">Home</a>
+<a href="#"  ng-click="active='projects'">Projects</a>
+<a href="#"  ng-click="active='services'">Services</a>
+<a href="#" ng-click="active='contact'">Contact</a>
+ </nav>
+    <p ng-hide="active">Please click a menu item</p>
+    <p ng-show="active">You chose <b>{{active}}</b></p>
+   
+</div>
+
+
+</body>
+</html>

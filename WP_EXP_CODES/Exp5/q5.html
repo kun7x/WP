@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>5.	Write a JavaScript conditional statement to find the largest of five numbers. Display an alert box to show the result.</p>
+    <script>
+        function findLargest(a, b, c, d, e) 
+        {
+            var largest = a;
+
+            if (b > largest) 
+            {
+                largest = b;
+            }
+            if (c > largest) 
+            {
+                largest = c;
+            }
+            if (d > largest) 
+            {
+                largest = d;
+            }
+            if (e > largest) 
+            {
+                largest = e;
+            }
+
+            alert("The largest number is: " + largest);
+        }
+        findLargest(10, 25, 5, 98, 45);
+    </script>
+</body>
+</html>

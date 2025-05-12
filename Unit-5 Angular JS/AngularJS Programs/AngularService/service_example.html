@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJs Services For Mathematical Operatoins</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app_module.js"></script>
+    <script src="math_service.js"></script>
+    <script src="mathController.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <h1>AngularJs Services For Mathematical Operatoins</h1>
+    <div ng-controller="mathController">
+        <table>
+            <tr>
+                <td>First Value :
+                    <td>
+                        <td>
+                            <input type="text" ng-model="x" />
+                            <td>
+            </tr>
+            <tr>
+                <td>Second Value :
+                    <td>
+                        <td>
+                            <input type="text" ng-model="y" />
+                            <td>
+            </tr>
+            <tr>
+                <td>Result is :
+                    <td>
+                        <td><b>{{result}}</b></td>
+                        <td>
+            </tr>
+        </table>
+        <input type="button" ng-click="calcAdd()" value="Addition" />
+        <input type="button" ng-click="calcSub()" value="Substraction" />
+        <input type="button" ng-click="calcMul()" value="Multiply" />
+        <input type="button" ng-click="calcDiv()" value="Division" />
+        <br> </div>
+</body>
+
+</html>

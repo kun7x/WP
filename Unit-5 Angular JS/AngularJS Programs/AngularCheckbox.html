@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myapp" ng-controller="ctrl">
+  <form>
+    Check to show a header:
+    Male<input type="checkbox" ng-model="selected" ng-true-value="'male'" ng-checked="selected=='male'">
+     Female<input type="checkbox" ng-model="selected" ng-true-value="'Female'" ng-checked="selected=='Female'">
+      XML<input type="checkbox" ng-model="selected" ng-true-value="'XML'" ng-checked="selected=='XML">
+  </form>
+  <h1>{{selected}}</h1>
+</div>
+<script>
+app=angular.module("myapp",[]);
+app.controller("ctrl",function($scope){
+$scope.selected="other";
+});
+</script>
+
+
+</body>
+</html>

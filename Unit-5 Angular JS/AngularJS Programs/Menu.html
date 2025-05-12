@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<style>
+a{
+color:red;
+background-color:yellow;
+padding:20px;
+text-decoration:none;
+text-transform:uppercase;
+border:1px solid red;
+border-radius:10px;
+}
+a:hover{
+background-color:pink;
+}
+nav{
+margin-top:30px;
+}
+p{
+margin-top:60px;
+color:blue;
+text-transform:uppercase;
+}
+b{
+background-color:pink;
+paddinf:10px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myapp" ng-controller="myctrl">
+<nav>
+<a href="#" ng-click="active='home'">home</a>
+<a href="#" ng-click="active='project'">project</a>
+<a href="#" ng-click="active='download'">download</a>
+<a href="#" ng-click="active='Help'">help</a>
+</nav>
+<p ng-hide="active">Plz click here</p>
+<p ng-show="active"><b> You choose </b>{{active}}</p>
+<ul>
+<li ng-repeat="x in fnamecountry">
+{{x.name+":"+x.country}}
+</li>
+</ul>
+<script>
+var app=angular.module("myapp",[]);
+app.controller("myctrl",function($scope){
+var fnamecountry=[{name:"Ram",country:"india"},{name:"Mike",country:"USA"},
+{name:"Tom",country:"France"},{name:"Smith",country:"UK"}];
+$scope.fnamecountry=fnamecountry;
+});
+</script>
+
+</body>
+</html>

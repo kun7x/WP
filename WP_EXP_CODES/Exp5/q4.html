@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>4.	Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case.</p>
+    <script>
+        function convertToUpperCase(str)
+        {
+            let words = str.split(' ');
+            let result = '';
+            for (let i = 0; i < words.length; i++) 
+            {
+                result += words[i].charAt(0).toUpperCase() + words[i].slice(1)
+                if (i < words.length - 1)
+                {
+                    result += ' ';
+                }
+            }
+            return result;
+        }
+        document.write("String: "+convertToUpperCase("kundan patil e258"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="" ng-init="col='red'" style="background-color: {{col}}; padding: 20px">
+        <p>Color: <input type="text" ng-model="col"></p>
+        <p>Current color is: {{col}}</p>
+    </div>
+</body>
+</html>

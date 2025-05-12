@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.angularjs.org/1.8.2/angular.min.js"></script>
+    <title>Form Validation</title>
+    <style>
+        form.ng-dirty {
+            background-color: rgb(226, 253, 199);
+        }
+
+        form.ng-pristine {
+            background-color: rgb(148, 255, 255);
+        }
+    </style>
+</head>
+<body ng-app="MyApp">
+
+    <div ng-controller="FormController">
+        <h2>Student Registration Form</h2>
+
+        <form name="myform" ng-submit="submitForm()" ng-class="{'ng-dirty': myform.$dirty, 'ng-pristine': myform.$pristine}" novalidate>
+            <label for="name">User Name (5-15 characters, starts with capital letter):</label>
+            <input type="text" name="username" ng-model="username" required minlength="5" maxlength="15" ng-pattern="/^[A-Z][a-zA-Z]*$/" ng-class="{'is-invalid': myform.username.$invalid && myform.username.$dirty}" />
+            <span ng-show="myform.username.$dirty && myform.username.$invalid">
+                User Name is required, should start with a capital letter, and contain only alphabets (5-15 characters).
+            </span>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" ng-model="email" required ng-class="{'is-invalid': myform.email.$invalid && myform.email.$dirty}" />
+            <span ng-show="myform.email.$dirty && myform.email.$invalid">
+                Please enter a valid email.
+            </span>
+            <br><br>
+
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" ng-model="age" required min="18" ng-class="{'is-invalid': myform.age.$invalid && myform.age.$dirty}" />
+            <span ng-show="myform.age.$dirty && myform.age.$invalid">
+                Age must be at least 18.
+            </span>
+            <br><br>
+
+            <input type="submit" value="Submit" ng-disabled="myform.$invalid" />
+        </form>
+    </div>
+
+    <script>
+        var app = angular.module("MyApp", []);
+
+        app.controller("FormController", function($scope) {
+            $scope.username = "";
+            $scope.email = "";
+            $scope.age = "";
+
+            $scope.submitForm = function() {
+                if ($scope.myform.$valid) {
+                    alert("Form submitted successfully!");
+                } else {
+                    alert("Please correct the errors in the form.");
+                }
+            };
+        });
+    </script>
+</body>
+</html>

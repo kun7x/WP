@@ -1,0 +1,106 @@
+Q3:
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Registration Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+
+  <form name="regForm" ng-submit="submitForm()" novalidate>
+
+    <!-- 1. Username -->
+    <h3>Username:</h3>
+    <input type="text" name="username" ng-model="user.username" required
+           ng-pattern="/^[A-Z][a-zA-Z]*$/" />
+    <div style="color:red" ng-show="regForm.username.$touched">
+      <div ng-show="regForm.username.$error.required">Username is required</div>
+      <div ng-show="regForm.username.$error.pattern">Must start with capital and only alphabets</div>
+    </div>
+
+    <!-- 2. Password -->
+    <h3>Password:</h3>
+    <input type="password" name="password" ng-model="user.password" required
+           ng-pattern="/^[a-zA-Z0-9]{5,15}$/" />
+    <div style="color:red" ng-show="regForm.password.$touched">
+      <div ng-show="regForm.password.$error.required">Password is required</div>
+      <div ng-show="regForm.password.$error.pattern">Password must be 5-15 alphanumeric characters</div>
+    </div>
+
+    <!-- 3. Confirm Password -->
+    <h3>Confirm Password:</h3>
+    <input type="password" name="confirm" ng-model="user.confirm" required />
+    <div style="color:red" ng-show="user.confirm !== user.password && regForm.confirm.$touched">
+      Passwords do not match
+    </div>
+
+    <!-- 4. Email -->
+    <h3>Email:</h3>
+    <input type="email" name="email" ng-model="user.email" required />
+    <div style="color:red" ng-show="regForm.email.$touched">
+      <div ng-show="regForm.email.$error.required">Email is required</div>
+      <div ng-show="regForm.email.$error.email">Invalid email</div>
+    </div>
+
+    <!-- 5. Checkbox (must not be empty) -->
+    <h3>Accept Terms:</h3>
+    <label><input type="checkbox" ng-model="user.terms" ng-true-value="true" ng-false-value="false" required checked> I accept terms</label>
+    <div style="color:red" ng-show="regForm.$submitted && !user.terms">You must accept terms</div>
+
+    <!-- 6. Gender (radio) -->
+    <h3>Gender:</h3>
+    <label><input type="radio" ng-model="user.gender" value="Male" required> Male</label>
+    <label><input type="radio" ng-model="user.gender" value="Female" required> Female</label>
+    <div style="color:red" ng-show="regForm.$submitted && !user.gender">Please select gender</div>
+
+    <!-- 7. Dynamic Dropdown -->
+    <h3>Course:</h3>
+    <select ng-model="user.course" ng-options="course for course in courses" required>
+      <option value="">--Select Course--</option>
+    </select>
+    <div style="color:red" ng-show="regForm.$submitted && !user.course">Please select a course</div>
+
+    <!-- 8. Phone Number -->
+    <h3>Phone Number:</h3>
+    <input type="text" name="phone" ng-model="user.phone"
+           ng-pattern="/^[0-9]{10}$/" required />
+    <div style="color:red" ng-show="regForm.phone.$touched">
+      <div ng-show="regForm.phone.$error.required">Phone is required</div>
+      <div ng-show="regForm.phone.$error.pattern">Must be 10 digit number</div>
+    </div>
+
+    <!-- 9. PAN Card -->
+    <h3>PAN Number:</h3>
+    <input type="text" name="pan" ng-model="user.pan"
+           ng-pattern="/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/" required />
+    <div style="color:red" ng-show="regForm.pan.$touched">
+      <div ng-show="regForm.pan.$error.required">PAN is required</div>
+      <div ng-show="regForm.pan.$error.pattern">Invalid PAN (e.g., ABCDE1234F)</div>
+    </div>
+
+    <!-- Submit -->
+    <br><br>
+    <button type="submit" ng-disabled="regForm.$invalid || user.confirm !== user.password">Register</button>
+  </form>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.user = {
+        terms: true 
+      };
+      $scope.courses = ["BCA", "BBA", "MCA", "MBA"];
+
+      $scope.submitForm = function() {
+        if ($scope.regForm.$valid && $scope.user.confirm === $scope.user.password) {
+          alert("Registration Successful!");
+        } else {
+          alert("Form contains errors!");
+        }
+      };
+    });
+  </script>
+
+</body>
+</html>

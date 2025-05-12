@@ -1,0 +1,25 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+</script> 
+<style>
+input.ng-invalid{background-color:yellow;}
+input.ng-valid{background-color:lawngreen;}
+form.ng-pristine{background-color:aqua;}
+form.ng-dirty{background-color:mediumaquamarine;}
+</style>
+
+<body ng-app="">
+<form name="myform">
+<h2>My Form</h2>
+<input type="text" name="myname"  ng-model="myname" placeholder="Enter your name" ng-minlength="3" ng-maxlength="15" required>
+<span style="color:red">
+<span ng-show="myform.myname.$error.required">plz enter name</span>
+<span ng-show="myform.myname.$error.minlength">too small</span>
+<span ng-show="myform.myname.$error.maxlength">too long</span>
+</span>
+<br><br><br>
+
+<button ng-disabled="myform.myname.$invalid">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="Myapp" ng-controller="Myctrl">
+<div>
+First Number:{{4+4}}
+Name:-<input type="text" ng-model="name"/>
+<h1 ng-bind="name"></h1>
+</div>
+<div>
+Second Number:{{3+4}}
+<p>The variables:{{{name:"David",age:"34"}.name}}</p>
+Array{{['Car','Male'][1]}}
+</div>
+<script>
+var app=angular.module('Myapp',[]);
+app.controller("Myctrl",function($scope){
+$scope.name="Suraj"
+});
+</script>
+</body>
+</html>

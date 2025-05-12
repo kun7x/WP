@@ -1,0 +1,22 @@
+//Program to add two numbers
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp">
+<div ng-controller="myctrl">
+First Number<input type="text" ng-model="first"/><br>
+Second Number<input type="text" ng-model="second"/>
+<button ng-click="updatevalue()">Sum</button>
+<h3>{{result}}</h3> 
+</div>
+<script>
+var app=angular.module("myApp",[]);
+app.controller('myctrl',function($scope){
+$scope.first=1;
+$scope.second=2;
+$scope.updatevalue=function(){
+$scope.result=$scope.first+'+'+$scope.second+"="+(+$scope.first + +$scope.second);
+};
+});
+
+</script>

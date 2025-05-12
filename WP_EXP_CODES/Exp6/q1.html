@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body style="background-color: #f9f9f9; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <form method="post" action="mailto:example@example.com" name="ContactForm" onsubmit="return ValidateContactForm()" style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Form Validation</h2>
+        <p>Name: <input type="text" size="40" name="Name" style="margin-bottom: 10px; padding: 5px;"></p>
+        <p>E-mail Address: <input type="text" size="40" name="Email" style="margin-bottom: 10px; padding: 5px;"></p>
+        <p>Password: <input type="password" size="40" name="Password" style="margin-bottom: 10px; padding: 5px;"></p>
+        <p>Number (1 to 10): <input type="text" size="40" name="Number" style="margin-bottom: 10px; padding: 5px;"></p>
+        <p>Telephone: <input type="text" size="40" name="Telephone" style="margin-bottom: 10px; padding: 5px;"></p>
+        <p><input type="checkbox" name="DoNotCall" onclick="EnableDisable(this);"> Please do not call me.</p>
+        <p>What can we help you with?
+            <select name="Subject" style="margin-bottom: 10px; padding: 5px; width: 100%;">
+                <option value="">Select an option</option>
+                <option>Customer Service</option>
+                <option>Question</option>
+                <option>Comment</option>
+                <option>Consultation</option>
+                <option>Other</option>
+            </select>
+        </p>
+        <p>Comments: <textarea cols="37" name="Comment" style="margin-bottom: 10px; padding: 5px;"></textarea></p>
+        <p style="text-align: center;">
+            <input type="submit" value="Send" name="submit" style="padding: 5px 15px; margin-right: 10px;">
+            <input type="reset" value="Reset" name="reset" style="padding: 5px 15px;">
+        </p>
+    </form>
+
+    <script>
+        function ValidateContactForm() {
+            var name = document.ContactForm.Name;
+            var email = document.ContactForm.Email;
+            var password = document.ContactForm.Password;
+            var number = document.ContactForm.Number;
+            var what = document.ContactForm.Subject;
+
+            if (name.value == "") {
+                alert("Please enter your name.");
+                name.focus();
+                return false;
+            }
+
+            if (!name.value.startsWith('A')) {
+                alert("Name should start with 'A'.");
+                name.focus();
+                return false;
+            }
+
+            if (email.value == "") {
+                alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+
+            if (email.value.indexOf("@") < 0 || email.value.indexOf(".") < 0) {
+                alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+
+            if (password.value == "" || !/^[a-zA-Z0-9]+$/.test(password.value)) {
+                alert("Password should be alphanumeric.");
+                password.focus();
+                return false;
+            }
+
+            if (number.value == "" || isNaN(number.value) || number.value < 1 || number.value > 10) {
+                alert("Please enter a number between 1 and 10.");
+                number.focus();
+                return false;
+            }
+
+            if (what.selectedIndex < 1) {
+                alert("Please select an option for how we can help you.");
+                what.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function EnableDisable(chkbx) {
+            document.ContactForm.Telephone.disabled = chkbx.checked;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html ng-app="myApp">
+   <head>
+      <title>AngularJS HTML DOM</title>
+   </head>
+   <body ng-controller="colorCtrl" ng-style="{backgroundColor:bgColor}">
+      <h2>AngularJS Sample Application</h2>
+      
+      <div>
+        <p><input type="text" ng-model="color"></p>
+        <button ng-click="changeColor()">Change color</button>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+      <script>
+        angular.module('myApp', [])
+        .controller('colorCtrl', function($scope){
+            $scope.bgColor = 'coral';
+            $scope.changeColor = function() {
+               if(!$scope.color) {
+                  alert("Please enter a color name or hex code.");
+                  return;
+               }
+                $scope.bgColor = $scope.color;
+            };
+        });
+      </script>
+      
+   </body>

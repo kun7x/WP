@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <fieldset>
+    <legend>Form Validation</legend>
+    <h1>Username:</h1>
+    <input type="text" id="username" required>
+    <h1>Email:</h1>
+    <input type="email" id="email" required>
+    <h1>Password:</h1>
+    <input type="password" id="password" required>
+    <button onclick="submit()">Submit</button>
+  </fieldset>
+  <script>
+    function ispassword(){
+      let password=document.getElementById("password").value;
+      const regex=/[A-Za-z0-9]/;
+      if(regex.test(password))
+      return true;
+    else
+    return false;
+    }
+    function isusername(){
+      let username=document.getElementById("username").value;
+      if(username.length!=0){
+        return true;
+      }
+      else{
+        return false;
+      }
+      
+    }
+    function isemail(){
+      let email=document.getElementById("email").value;
+      if(email.includes('@') && email.includes('.'))
+      return true;
+    else{
+      return false;
+    }
+
+    }
+    function submit(){
+      if(ispassword()&&isemail()&&isusername()){
+        alert("Form is valid and get submitted successfully");
+        username.value="";
+        email.value="";
+        password.value="";
+      }
+      else{
+        alert("Wrong Inputs");
+      }
+    }
+  </script>
+</body>
+</html>

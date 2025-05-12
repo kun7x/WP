@@ -1,0 +1,17 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+</script> 
+<style>
+input.ng-invalid{background-color:yellow;}
+input.ng-valid{background-color:lawngreen;}
+form.ng-pristine{background-color:aqua;}
+form.ng-dirty{background-color:mediumaquamarine;}
+</style>
+
+<body ng-app="">
+<form name="myform">
+<h2>My Form</h2>
+<input type="text" ng-model="myname" placeholder="Enter your name" required>
+</form>
+</body>
+</html> 

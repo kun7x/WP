@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Form Validation</legend>
+        <h4>Username:</h4>
+        <input type="text" id="username" required>
+        <h4>Email:</h4>
+        <input type="email" id="email" required>
+        <h4>Password:</h4>
+        <input type="password" id="password" required>
+        <button onclick="submit()">Submit</button>
+    </fieldset>
+    <script>
+        function ispassword(){
+            var pass=document.getElementById("password").value;
+            const regex=/^[a-zA-Z0-9]*$/;
+            if(regex.test(pass))
+                return true;
+            else
+                return false;
+        }
+        function isemail(){
+            var em=document.getElementById("email").value;
+            const regex=/^[a-z0-9]+@[a-z0-9]+\.[a-z]+$/;
+            if(regex.test(em))
+                return true;
+            else
+                return false;
+        }
+        function isusername(){
+            var un=document.getElementById("username").value;
+            const regex=/^[A-Z][a-z]*$/;
+            if(regex.test(un))
+                return true;
+            else
+                return false;
+        }
+        function submit(){
+            if(ispassword()&&isemail()&&isusername()){
+                alert("Form submitted");
+                username.value="";
+                email.value="";
+                password.value=""
+            }
+            else{
+                if(!isemail())
+                    alert("Invalid email");
+                if(!ispassword())
+                    alert("Invalid password");
+                if(!isusername())
+                    alert("Invalid username");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <h4>food</h4>
+        <table border="1">
+            <tr>
+                <th>Items</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <tr ng-repeat="x in items">
+                <td>{{x.name}}</td>
+                <td>{{x.price}}</td>
+                <td><input type="number" ng-model="x.qty"></td>
+            </tr>
+        </table> <br>
+        <button ng-click="submit()">Submit</button>
+        <h3>Total: {{tot}}</h3>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.tot=0;
+            $scope.items=[
+                {name:"Pizza",price:10,qty:1},
+                {name:"Burger",price:5,qty:1},
+                {name:"Fries",price:2,qty:1}
+            ];
+            $scope.submit= function(){
+                for(var i=0; i<$scope.items.length; i++){
+                    $scope.tot+=$scope.items[i].price*$scope.items[i].qty;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

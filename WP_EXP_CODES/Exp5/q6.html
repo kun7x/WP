@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>6.	Write a JavaScript program which compute, the average marks of the following students Then, this average is used to determine the corresponding grade.</p>
+    <script>
+        var students = {
+            "David": 80,
+            "Vinoth": 77,
+            "Divya": 88,
+            "Ishitha": 95,
+            "Thomas": 68
+        };
+
+        var totalMarks = 0;
+        var studentCount = 0;
+
+        for (let student in students) {
+            totalMarks += students[student];
+            studentCount++;
+        }
+        var averageMarks = totalMarks / studentCount;
+        var grade;
+        if (averageMarks < 60) {
+            grade = 'F';
+        } else if (averageMarks < 70) {
+            grade = 'D';
+        } else if (averageMarks < 80) {
+            grade = 'C';
+        } else if (averageMarks < 90) {
+            grade = 'B';
+        } else {
+            grade = 'A';
+        }
+
+        // Display results
+        document.write("Average Marks: " + averageMarks.toFixed(2)+"<br>");
+        document.write("Grade: " + grade);
+    </script>
+</body>
+</html>

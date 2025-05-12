@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <script src="~/Scripts/angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        Response Data: {{data}} <br />
+        Error: {{error}}
+    </div>
+    <script>
+        var myApp = angular.module('myApp', []);
+    
+        myApp.controller("myController", function ($scope, $http) {
+       
+            var onSuccess = function (data, status, headers, config) {
+                $scope.data = data;
+            };
+
+            var onError = function (data, status, headers, config) {
+                $scope.error = status;
+            }
+        
+            $http.post('submitData', { myData: 'Hello World!' })
+                 .success(onSuccess)
+                 .error(onError);
+         
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <h3>Likes and Dislike</h3>
+        <button ng-click="like()">Like</button> <br> <br>
+        <button ng-click="dislike()">Dislike</button>
+        <p>Like Count: {{likes}}</p>
+        <p>Dislike Count: {{dislikes}}</p>
+        <p>Like Dislike Difference: {{likes_diff}}</p>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.likes=0;
+            $scope.dislikes=0;
+            $scope.likes_diff=0;
+            $scope.like=function(){
+                $scope.likes++;
+                $scope.likes_diff++;
+            }
+            $scope.dislike=function(){
+                $scope.dislikes++;
+                $scope.likes_diff--;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Shopping Cart</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <style>
+    .product, .cart-item { border: 1px solid #ccc; padding: 10px; margin: 10px; }
+    .cart { margin-top: 20px; }
+  </style>
+</head>
+<body ng-controller="cartController" ng-init="init()">
+
+  <h2>Product List</h2>
+  <div class="product" ng-repeat="item in products">
+    <p><strong>{{item.name}}</strong></p>
+    <p>Price: ₹{{item.price}}</p>
+    <button ng-click="addToCart(item)" ng-disabled="item.added">Add to Cart</button>
+    <span ng-show="item.added" style="color: green;">✔ Added</span>
+  </div>
+
+  <div class="cart" ng-show="cart.length > 0">
+    <h2>Your Cart</h2>
+    <div class="cart-item" ng-repeat="item in cart">
+      <p>{{item.name}} - ₹{{item.price}} x 
+        <input type="number" ng-model="item.qty" min="1" ng-change="updateTotal()" />
+        = ₹{{item.price * item.qty}}
+      </p>
+      <button ng-click="removeFromCart(item)">Remove</button>
+    </div>
+    <h3>Total: ₹<span ng-bind="total"></span></h3>
+  </div>
+
+  <div ng-hide="cart.length > 0">
+    <h3>Your cart is empty</h3>
+  </div>
+
+  <script>
+    var app = angular.module("shoppingApp", []);
+    app.controller("cartController", function($scope) {
+      $scope.init = function() {
+        $scope.products = [
+          { name: 'Laptop', price: 50000, added: false },
+          { name: 'Headphones', price: 1500, added: false },
+          { name: 'Keyboard', price: 700, added: false }
+        ];
+        $scope.cart = [];
+        $scope.total = 0;
+      };
+
+      $scope.addToCart = function(product) {
+        product.added = true;
+        let item = angular.copy(product);
+        item.qty = 1;
+        $scope.cart.push(item);
+        $scope.updateTotal();
+      };
+
+      $scope.removeFromCart = function(product) {
+        let index = $scope.cart.indexOf(product);
+        if (index !== -1) {
+          $scope.cart.splice(index, 1);
+          // Also allow product to be added again
+          $scope.products.find(p => p.name === product.name).added = false;
+        }
+        $scope.updateTotal();
+      };
+
+      $scope.updateTotal = function() {
+        $scope.total = 0;
+        $scope.cart.forEach(item => {
+          $scope.total += item.price * item.qty;
+        });
+      };
+    });
+  </script>
+
+</body>
+</html>

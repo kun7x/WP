@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+         table, th , td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+         }
+         table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+         }
+         table tr:nth-child(even) {
+            background-color: #ffffff;
+         }
+      </style>
+</head>
+<body>
+<title>Semester Marks Table</title>
+
+<h1>Semester Marks Table</h1>
+
+<div ng-controller="SecondController">
+    <table>
+	<tr>
+	<th> Rollno </th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Marks</th>
+	</tr>
+        <tr ng-repeat="p in studentdetails">
+	     <td>{{p.Rollno}}</td>
+            <td>{{p.Name}}</td>
+            <td>{{p.Subject}}</td>
+            <td>{{p.marks}}</td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

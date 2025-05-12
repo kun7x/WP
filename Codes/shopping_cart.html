@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="MyApp"> 
+    <div ng-controller="MyCtrl" ng-init="list=[{name:'ABC',price:'100'},
+                                                {name:'XYZ',price:'200'},
+                                                {name:'PQR',price:'300'}]">
+        <h1>Shoping Cart</h1>
+        <p>name: <input type="text" ng-model="newname"></p>
+        <p>price: <input type="number" ng-model="newprice"></p>
+        <button ng-click="add()">Add</button>
+        <ul>
+            <span>Name Price</span>
+            <li ng-repeat="x in list">
+                {{x.name +" "+x.price}}
+                <button ng-click="remove(x)">X</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.remove=function(x){
+                var index=$scope.list.indexOf(x);
+                if(index!=-1){
+                    $scope.list.splice(index,1);
+                }
+            };
+            $scope.add=function(){
+                if($scope.newname && $scope.newprice){
+                    $scope.list.push({name:$scope.newname,price:$scope.newprice})
+                    $scope.newname="";
+                    $scope.newprice="";
+                }
+            };
+        });
+    </script>
+</body>
+</html>

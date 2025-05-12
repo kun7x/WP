@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="MyApp" ng-controller="ctrl">
+<table border="1">
+<tr>
+<th> Product Name</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+<tr  ng-repeat=" x in ProductItems">
+<td>{{x.name}}</td>
+<td>{{x.price}}</td>
+<td><input type="number" ng-model="x.qty" min="1" /></td>
+</tr><br>
+
+</table>
+<input type="button" value="calculate" ng-click="show()"/><br>
+Total Order Item Price:{{total}}
+</div>
+<script>
+var app=angular.module("MyApp",[]);
+app.controller("ctrl",function($scope){
+$scope.ProductItems=[
+                     {name:"Pen", price:23,qty:1},
+                     {name:"Pen Drive", price:23,qty:1},
+                     {name:"Book", price:23,qty:1},
+                     {name:"Pencil", price:23,qty:3}
+                     ];
+                    
+      $scope.show=function(){
+      var tot=0;
+      for(var i=0;i<$scope.ProductItems.length;i++)
+      {
+      tot=tot+$scope.ProductItems[i].price*$scope.ProductItems[i].qty;
+      }
+      $scope.total=tot;
+      
+      }
+      });
+      
+                     
+                     
+</script> 
+ </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl" ng-init="Items=[{name:'Pizza',price:200,qty:1},
+                                                {name:'Apple',price:100,qty:1}]">
+        <h3>Order</h3>
+        <table border=2px>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <tr ng-repeat="x in Items">
+                <td>{{x.name}}</td>
+                <td>{{x.price}}</td>
+                <td><input type="number" ng-model="x.qty"></td>
+            </tr>
+        </table> <br>
+        <button ng-click="total()">Total</button>
+        <h4>Total: {{tot}}</h4>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            $scope.tot=0;
+            $scope.total=function(){
+                $scope.tot=0;
+                for(var i=0; i<$scope.Items.length; i++){
+                    $scope.tot+= $scope.Items[i].qty*$scope.Items[i].price;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

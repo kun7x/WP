@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <h3>Form validation</h3>
+        <form name="myform" ng-submit="submitForm()" novalidate>
+            <label for="username">Enter Username: </label>
+            <input type="text" name="username" required ng-pattern="/^[A-Z][a-zA-Z]*$/"/>
+            <div ng-show="myform.username.$touched">
+                <div ng-show="myform.username.$error.required">Username required!</div>
+                <div ng-show="myform.username.$error.pattern">Enter valid username!</div>
+            </div>
+
+            <label for="password">Enter Password: </label>
+            <input type="password" name="password" required ng-pattern="/^[a-zA-Z0-9]+$/"/>
+            <div ng-show="myform.password.$touched">
+                <div ng-show="myform.password.$error.required">Password required!</div>
+                <div ng-show="myform.password.$error.pattern">Enter valid password!</div>
+            </div>
+
+            <label for="username">Confirm Password: </label>
+            <input type="password" name="confirm" required />
+            <div ng-show="myform.username.$touched">
+                <div ng-show="myform.username.$error.required">Username required!</div>
+                <div ng-show="myform.username.$error.pattern">Enter valid password!</div>
+            </div>
+
+            <label for="username">Enter Username: </label>
+            <input type="text" name="username" required ng-pattern="/^[A-Z][a-zA-Z]*$/"/>
+            <div ng-show="myform.username.$touched">
+                <div ng-show="myform.username.$error.required">Username required!</div>
+                <div ng-show="myform.username.$error.pattern">Enter valid password!</div>
+            </div>
+
+            <label for="username">Enter Username: </label>
+            <input type="text" name="username" required ng-pattern="/^[A-Z][a-zA-Z]*$/"/>
+            <div ng-show="myform.username.$touched">
+                <div ng-show="myform.username.$error.required">Username required!</div>
+                <div ng-show="myform.username.$error.pattern">Enter valid password!</div>
+            </div>
+        </form>
+    </div>
+    <script>
+        var app=angular.module("MyApp",[]);
+        app.controller("MyCtrl",function($scope){
+            
+        });
+    </script>
+</body>
+</html>
